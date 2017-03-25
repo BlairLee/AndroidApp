@@ -6,6 +6,7 @@
     <dimen name="spacing_large">24dp</dimen>
 
     <dimen name="user_picture_size">60dp</dimen>
+    <dimen name="user_picture_jumbo_height">180dp</dimen>
 
     <dimen name="icon_button_size">24dp</dimen>
 

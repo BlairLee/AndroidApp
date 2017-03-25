@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/spacing_medium"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/project_edit_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/project_edit_name_hint"/>
+
+    <EditText
+        android:id="@+id/project_edit_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/project_edit_details_hint"/>
+
+    <TextView
+        android:id="@+id/project_edit_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:layout_gravity="right"
+        android:text="@string/action_delete"
+        />
+
+</LinearLayout>

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -29,7 +30,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/caption_text_size"
-                    tools:text="Jing Guo" />
+                    tools:text="Your name" />
 
                 <ImageButton
                     android:id="@+id/edit_basic_info"
@@ -37,8 +38,7 @@
                     android:layout_height="@dimen/icon_button_size"
                     android:layout_marginLeft="@dimen/spacing_xsmall"
                     android:src="@drawable/ic_mode_edit_black_18dp"
-                    android:background="?attr/selectableItemBackground"
-                    android:contentDescription="@string/edit_basic_info"/>
+                    android:background="?attr/selectableItemBackground" />
 
             </LinearLayout>
 
@@ -49,14 +49,14 @@
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/user_name_layout"
                 android:layout_toLeftOf="@+id/user_picture"
-                tools:text="guojing@jiuzhang.com" />
+                tools:text="Your email" />
 
             <ImageView
                 android:id="@+id/user_picture"
                 android:layout_width="@dimen/user_picture_size"
                 android:layout_height="@dimen/user_picture_size"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/guojing"
+                android:src="@drawable/user_ghost"
                 android:contentDescription="@string/user_picture"/>
 
         </RelativeLayout>
@@ -66,16 +66,16 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_marginTop="@dimen/spacing_large"
-            android:layout_marginBottom="@dimen/spacing_small">
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="@dimen/caption_text_size"
+                android:textSize="25sp"
                 android:textAllCaps="true"
-                android:text="@string/section_education" />
+                android:text="@string/section_education"/>
 
             <ImageButton
                 android:id="@+id/add_education_btn"
@@ -88,33 +88,80 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/education_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
-
-            <TextView
-                android:id="@+id/education_school"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                tools:text="CMU (2012 ~ 2016)" />
-
-            <ImageButton
-                android:id="@+id/edit_education_btn"
-                android:layout_width="@dimen/icon_button_size"
-                android:layout_height="@dimen/icon_button_size"
-                android:src="@drawable/ic_mode_edit_black_18dp"
-                android:background="?attr/selectableItemBackground"
-                android:contentDescription="@string/edit_education"/>
+            android:orientation="vertical">
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/education_courses"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="- Database\n- Algorithm\n- Network" />
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="25sp"
+                android:textAllCaps="true"
+                android:text="@string/section_projects"/>
+
+            <ImageButton
+                android:id="@+id/add_project_btn"
+                android:layout_width="@dimen/icon_button_size"
+                android:layout_height="@dimen/icon_button_size"
+                android:src="@drawable/ic_add_black_18dp"
+                android:background="?attr/selectableItemBackground"
+                android:contentDescription="@string/add_project"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/project_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="25sp"
+                android:textAllCaps="true"
+                android:text="@string/section_experience"/>
+
+            <ImageButton
+                android:id="@+id/add_experience_btn"
+                android:layout_width="@dimen/icon_button_size"
+                android:layout_height="@dimen/icon_button_size"
+                android:src="@drawable/ic_add_black_18dp"
+                android:background="?attr/selectableItemBackground"
+                android:contentDescription="@string/add_experience"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/experience_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        </LinearLayout>
 
     </LinearLayout>
 
