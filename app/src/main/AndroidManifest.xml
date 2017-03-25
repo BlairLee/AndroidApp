@@ -20,10 +20,11 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".BasicInfoEditActivity" />
         <activity android:name=".EducationEditActivity"/>
         <activity android:name=".ProjectEditActivity"/>
         <activity android:name=".ExperienceEditActivity"/>
-        <activity android:name=".BasicInfoEditActivity" />
+
     </application>
 
 </manifest>

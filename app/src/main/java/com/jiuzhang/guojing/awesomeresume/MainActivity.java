@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        setupBasicInfoUI();
+        setupBasicInfo();
         setupEducations();
         setupExperiences();
         setupProjects();
@@ -138,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     // -------------------------------SETUP EDUCATIONS, EXPERIENCES, PROJECTS ----------------------------//
+    // SETUP BASIC INFO----------------
     private void setupBasicInfo() {
         ((TextView) findViewById(R.id.name)).setText(TextUtils.isEmpty(basicInfo.name)
                 ? "Your name"
@@ -389,10 +390,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     // -------------------------------SETUP BASIC INFO UI ----------------------------//
-    private void setupBasicInfoUI() {
-        ((TextView) findViewById(R.id.name)).setText(basicInfo.name);
-        ((TextView) findViewById(R.id.email)).setText(basicInfo.email);
-    }
+//    private void setupBasicInfoUI() {
+//        ((TextView) findViewById(R.id.name)).setText(basicInfo.name);
+//        ((TextView) findViewById(R.id.email)).setText(basicInfo.email);
+//    }
 
     // -------------------------------LOAD DATA ----------------------------//
     private void loadData() {
@@ -416,53 +417,6 @@ public class MainActivity extends AppCompatActivity {
                 new TypeToken<List<Project>>(){});
         projects = savedProjects == null ? new ArrayList<Project>() : savedProjects;
     }
-
-//    private void fakeData() {
-//        basicInfo = new BasicInfo();
-//        basicInfo.name = "Bowen Li";
-//        basicInfo.email = "guojing@jiuzhang.com";
-//
-//        Education education1 = new Education();
-//        education1.school = "BUPT";
-//        education1.major = "Electrical Engineering";
-//        education1.startDate = DateUtils.stringToDate("09/2010");
-//
-//        // TODO 1: Set the endDate
-//        education1.endDate = DateUtils.stringToDate("06/2014");
-//        // TODO 2: Add some fake courses in education1.courses
-//        education1.courses = new ArrayList<>();
-//        education1.courses.add("Circuit");
-//        education1.courses.add("Telecommunication Enginnering");
-//        education1.courses.add("Java");
-//
-//        Education education2 = new Education();
-//        education2.school = "NCSU";
-//        education2.major = "Electrical and Computer Engineering";
-//        education2.startDate = DateUtils.stringToDate("08/2014");
-//
-//        education2.endDate = DateUtils.stringToDate("12/2017");
-//        education2.courses = new ArrayList<>();
-//        education2.courses.add("Data Structure");
-//        education2.courses.add("Algorithms");
-//        education2.courses.add("OS");
-//        educations = new ArrayList<Education>();
-//        educations.add(education1);
-//        educations.add(education2);
-//
-//        Project p1 = new Project();
-//        p1.name = "Project1";
-//        p1.details = new ArrayList<>();
-//        p1.details.add("thing1");
-//        p1.details.add("thing2");
-//        Project p2 = new Project();
-//        p2.name = "Project2";
-//        p2.details = new ArrayList<>();
-//        p2.details.add("thing3");
-//        p2.details.add("thing4");
-//        projects = new ArrayList<Project>();
-//        projects.add(p1);
-//        projects.add(p2);
-//    }
 
     public static String formatItems(List<String> items) {
         StringBuilder sb = new StringBuilder();
