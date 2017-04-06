@@ -56,7 +56,7 @@
                 android:layout_width="@dimen/user_picture_size"
                 android:layout_height="@dimen/user_picture_size"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/user_ghost"
+                android:src="@mipmap/self_image"
                 android:contentDescription="@string/user_picture"/>
 
         </RelativeLayout>

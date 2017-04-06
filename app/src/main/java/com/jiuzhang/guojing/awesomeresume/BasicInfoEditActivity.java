@@ -70,7 +70,6 @@ public class BasicInfoEditActivity extends EditBaseActivity<BasicInfo> {
         if (data.imageUri != null) {
             showImage(data.imageUri);
         }
-
         findViewById(R.id.basic_info_edit_image_layout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -22,6 +22,8 @@ public class PermissionUtils {
     public static void requestPermissions(@NonNull Activity activity,
                                           @NonNull String[] permissions,
                                           int reqCode) {
+        // 申请权限：ActivityCompat.requestPermissions来申请某项权限，系统会自动弹出提醒，询问用户是否许可。
+        // 处理权限申请回调: onRequestPermissionsResult方法会返回权限的申请是否被许可
         ActivityCompat.requestPermissions(activity, permissions, reqCode);
     }
 

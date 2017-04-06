@@ -4,9 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.text.TextUtilsCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutCompat;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageButton;
@@ -17,9 +15,9 @@ import android.widget.TextView;
 import com.google.gson.reflect.TypeToken;
 import com.jiuzhang.guojing.awesomeresume.model.BasicInfo;
 import com.jiuzhang.guojing.awesomeresume.model.Education;
-import com.jiuzhang.guojing.awesomeresume.util.DateUtils;
 import com.jiuzhang.guojing.awesomeresume.model.Experience;
 import com.jiuzhang.guojing.awesomeresume.model.Project;
+import com.jiuzhang.guojing.awesomeresume.util.DateUtils;
 import com.jiuzhang.guojing.awesomeresume.util.ImageUtils;
 import com.jiuzhang.guojing.awesomeresume.util.ModelUtils;
 
@@ -151,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
         if (basicInfo.imageUri != null) {
             ImageUtils.loadImage(this, basicInfo.imageUri, userPicture);
         } else {
-            userPicture.setImageResource(R.drawable.user_ghost);
+            userPicture.setImageResource(R.mipmap.self_image);
         }
 
         findViewById(R.id.edit_basic_info).setOnClickListener(new View.OnClickListener() {
