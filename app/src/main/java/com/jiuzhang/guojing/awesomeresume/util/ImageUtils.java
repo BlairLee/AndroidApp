@@ -11,8 +11,10 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.widget.ImageView;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 
@@ -21,10 +23,37 @@ public class ImageUtils {
     public static void loadImage(@NonNull Context context,
                                  @NonNull Uri uri,
                                  @NonNull ImageView imageView) {
+//        InputStream is = null;
+//        if (uri.getAuthority() != null) {
+//            try {
+//                is = context.getContentResolver().openInputStream(uri);
+//                Log.i("Bowen", is.toString());
+//                Bitmap bitmap = BitmapFactory.decodeStream(is);
+////                return writeToTempImageAndGetPathUri(context, bmp).toString();
+////                if (bitmap == null) {
+//                    String path = writeToTempImageAndGetPathUri(context, bitmap).toString();
+//                    Log.i("Bowen", path);
+//                    File imgFile = new File(path);
+//                    bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+////                }
+//            imageView.setImageBitmap(bitmap);
+//            } catch (FileNotFoundException e) {
+//                e.printStackTrace();
+//            }finally {
+////                try {
+////                    is.close();
+////                } catch (IOException e) {
+////                    e.printStackTrace();
+////                }
+//            }
+//        }
+//        return;
+        
         try {
             Bitmap bitmap;
+            Log.i("Bowen", getRealPathFromURI(context, uri));
             bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), uri);
-//            Log.i("Bowen", getRealPathFromURI(context, uri));
+
             if (bitmap == null) {
                 String path = getRealPathFromURI(context, uri);
                 File imgFile = new File(path);
@@ -34,6 +63,13 @@ public class ImageUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private static Uri writeToTempImageAndGetPathUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
     }
 
     public static String getRealPathFromURI(Context context, Uri contentUri) {

@@ -213,15 +213,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        educationView.findViewById(R.id.edit_education_btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, EducationEditActivity.class);
-                // This Education object is the one that’s correspondent to "edit" butten that's being clicked on
-                intent.putExtra(EducationEditActivity.KEY_EDUCATION, education);
-                startActivityForResult(intent, REQ_CODE_EDIT_EDUCATION);
-            }
-        });
+//        educationView.findViewById(R.id.edit_education_btn).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MainActivity.this, EducationEditActivity.class);
+//                // This Education object is the one that’s correspondent to "edit" butten that's being clicked on
+//                intent.putExtra(EducationEditActivity.KEY_EDUCATION, education);
+//                startActivityForResult(intent, REQ_CODE_EDIT_EDUCATION);
+//            }
+//        });
 
         return educationView;
     }

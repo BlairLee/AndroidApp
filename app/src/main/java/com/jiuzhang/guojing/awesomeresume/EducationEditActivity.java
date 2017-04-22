@@ -2,14 +2,10 @@ package com.jiuzhang.guojing.awesomeresume;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -82,7 +78,7 @@ public class EducationEditActivity extends EditBaseActivity<Education> {
         // 通过 intent 来传递数据在 Activity 之间
         Intent resultIntent = new Intent(); // HashMap, Key-value pair; 可以储存数据
         resultIntent.putExtra(KEY_EDUCATION, data);    // serialize and deserialize
-        // RESULT_OK: 表明结果是OK 的
+        // RESULT_OK: 表明结果是OK的
         setResult(Activity.RESULT_OK, resultIntent);
         finish();
     }
