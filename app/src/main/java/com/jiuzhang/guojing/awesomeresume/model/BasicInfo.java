@@ -12,6 +12,8 @@ public class BasicInfo implements Parcelable {
 
     public Uri imageUri;
 
+    public String imagePath;
+
     public BasicInfo()
     {
 
@@ -21,6 +23,7 @@ public class BasicInfo implements Parcelable {
         name = in.readString();
         email = in.readString();
         imageUri = in.readParcelable(Uri.class.getClassLoader());
+        imagePath = in.readString();
     }
 
     public static final Creator<BasicInfo> CREATOR = new Creator<BasicInfo>() {
@@ -45,5 +48,6 @@ public class BasicInfo implements Parcelable {
         parcel.writeString(name);
         parcel.writeString(email);
         parcel.writeParcelable(imageUri, i);
+        parcel.writeString(imagePath);
     }
 }

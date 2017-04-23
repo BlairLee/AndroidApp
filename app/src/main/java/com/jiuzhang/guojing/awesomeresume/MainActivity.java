@@ -147,9 +147,9 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView userPicture = (ImageView) findViewById(R.id.user_picture);
         if (basicInfo.imageUri != null) {
-            ImageUtils.loadImage(this, basicInfo.imageUri, userPicture);
+            ImageUtils.loadImage(this, basicInfo.imagePath, userPicture);
         } else {
-            userPicture.setImageResource(R.mipmap.self_image);
+            userPicture.setImageResource(R.drawable.user_ghost);
         }
 
         findViewById(R.id.edit_basic_info).setOnClickListener(new View.OnClickListener() {
@@ -278,7 +278,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // -------------------------------DELETE & UPDATE EDUCATION, EXPERIENCE, PROJECT ----------------------------//
+    // ------------------DELETE & UPDATE EDUCATION, EXPERIENCE, PROJECT --------------------------//
     // UPDATE BASIC INFO---------------------------
     private void updateBasicInfo(BasicInfo basicInfo) {
         ModelUtils.save(this, MODEL_BASIC_INFO, basicInfo);
@@ -388,10 +388,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     // -------------------------------SETUP BASIC INFO UI ----------------------------//
-//    private void setupBasicInfoUI() {
-//        ((TextView) findViewById(R.id.name)).setText(basicInfo.name);
-//        ((TextView) findViewById(R.id.email)).setText(basicInfo.email);
-//    }
 
     // -------------------------------LOAD DATA ----------------------------//
     private void loadData() {

@@ -16,12 +16,11 @@ import android.widget.ImageView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.IOException;
 
 public class ImageUtils {
 
     public static void loadImage(@NonNull Context context,
-                                 @NonNull Uri uri,
+                                 @NonNull String imagePath,
                                  @NonNull ImageView imageView) {
 //        InputStream is = null;
 //        if (uri.getAuthority() != null) {
@@ -49,20 +48,26 @@ public class ImageUtils {
 //        }
 //        return;
         
-        try {
-            Bitmap bitmap;
-            Log.i("Bowen", getRealPathFromURI(context, uri));
-            bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), uri);
+//        try {
+//            Bitmap bitmap;
+//            Log.i("Bowen", getRealPathFromURI(context, uri));
+//            bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), uri);
+//
+//            if (bitmap == null) {
+//                String path = getRealPathFromURI(context, uri);
+//                File imgFile = new File(path);
+//                bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+//            }
+//            imageView.setImageBitmap(bitmap);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
-            if (bitmap == null) {
-                String path = getRealPathFromURI(context, uri);
-                File imgFile = new File(path);
-                bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-            }
+            // correct !!!
+            Log.i("Bowen", imagePath);
+            File imgFile = new File(imagePath);
+            Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
             imageView.setImageBitmap(bitmap);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     private static Uri writeToTempImageAndGetPathUri(Context inContext, Bitmap inImage) {

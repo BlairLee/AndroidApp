@@ -20,7 +20,7 @@
             android:id="@+id/basic_info_edit_image"
             android:layout_width="match_parent"
             android:layout_height="@dimen/user_picture_jumbo_height"
-            android:src="@mipmap/self_image"
+            android:src="@drawable/user_ghost"
             android:scaleType="centerCrop"
             android:contentDescription="@string/choose_user_picture"/>
 

@@ -2,12 +2,15 @@ package com.jiuzhang.guojing.awesomeresume;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -31,8 +34,10 @@ public class BasicInfoEditActivity extends EditBaseActivity<BasicInfo> {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQ_CODE_PICK_IMAGE && resultCode == Activity.RESULT_OK) {
             Uri imageUri = data.getData();
+            Log.i("Bowen_i", imageUri.toString());
+            String imagePath = getRealPathFromURI(getApplicationContext(), imageUri);
             if (imageUri != null) {
-                showImage(imageUri);
+                showImage(imagePath, imageUri);
             }
         }
     }
@@ -68,7 +73,7 @@ public class BasicInfoEditActivity extends EditBaseActivity<BasicInfo> {
                 .setText(data.email);
 
         if (data.imageUri != null) {
-            showImage(data.imageUri);
+            showImage(data.imagePath, data.imageUri);
         }
         findViewById(R.id.basic_info_edit_image_layout).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,11 +97,26 @@ public class BasicInfoEditActivity extends EditBaseActivity<BasicInfo> {
         data.name = ((EditText) findViewById(R.id.basic_info_edit_name)).getText().toString();
         data.email = ((EditText) findViewById(R.id.basic_info_edit_email)).getText().toString();
         data.imageUri = (Uri) findViewById(R.id.basic_info_edit_image).getTag();
-
+        data.imagePath = getRealPathFromURI(getApplicationContext(), data.imageUri);
         Intent resultIntent = new Intent();
         resultIntent.putExtra(KEY_BASIC_INFO, data);
         setResult(Activity.RESULT_OK, resultIntent);
         finish();
+    }
+
+    public static String getRealPathFromURI(Context context, Uri contentUri) {
+        Cursor cursor = null;
+        try {
+            String[] proj = { MediaStore.Images.Media.DATA };
+            cursor = context.getContentResolver().query(contentUri,  proj, null, null, null);
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            return cursor.getString(column_index);
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
     }
 
     @Override
@@ -104,12 +124,12 @@ public class BasicInfoEditActivity extends EditBaseActivity<BasicInfo> {
         return getIntent().getParcelableExtra(KEY_BASIC_INFO);
     }
 
-    private void showImage(@NonNull Uri imageUri) {
+    private void showImage(@NonNull String imagePath, @NonNull Uri imageUri) {
         ImageView imageView = (ImageView) findViewById(R.id.basic_info_edit_image);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-
         imageView.setTag(imageUri);
-        ImageUtils.loadImage(this, imageUri, imageView);
+//        ImageUtils.loadImage(this, imageUri, imageView);
+        ImageUtils.loadImage(this, imagePath, imageView);
     }
 
     private void pickImage() {
