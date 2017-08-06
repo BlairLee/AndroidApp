@@ -303,7 +303,7 @@ public class Dribbble {
         SharedPreferences sp = context.getApplicationContext().getSharedPreferences(
                 SP_AUTH, Context.MODE_PRIVATE);
         sp.edit().putString(KEY_ACCESS_TOKEN, token).apply();
-    }
+    } 
 
     public static String loadAccessToken(@NonNull Context context) {
         SharedPreferences sp = context.getApplicationContext().getSharedPreferences(
