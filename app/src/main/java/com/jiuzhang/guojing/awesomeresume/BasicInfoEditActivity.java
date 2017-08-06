@@ -69,6 +69,7 @@ public class BasicInfoEditActivity extends EditBaseActivity<BasicInfo> {
     protected void setupUIForEdit(@NonNull BasicInfo data) {
         ((EditText) findViewById(R.id.basic_info_edit_name))
                 .setText(data.name);
+
         ((EditText) findViewById(R.id.basic_info_edit_email))
                 .setText(data.email);
 
@@ -96,7 +97,9 @@ public class BasicInfoEditActivity extends EditBaseActivity<BasicInfo> {
 
         data.name = ((EditText) findViewById(R.id.basic_info_edit_name)).getText().toString();
         data.email = ((EditText) findViewById(R.id.basic_info_edit_email)).getText().toString();
-        data.imageUri = (Uri) findViewById(R.id.basic_info_edit_image).getTag();
+        if (data.imageUri != findViewById(R.id.basic_info_edit_image).getTag()) {
+            data.imageUri = (Uri) findViewById(R.id.basic_info_edit_image).getTag();
+        }
         data.imagePath = getRealPathFromURI(getApplicationContext(), data.imageUri);
         Intent resultIntent = new Intent();
         resultIntent.putExtra(KEY_BASIC_INFO, data);
@@ -108,10 +111,14 @@ public class BasicInfoEditActivity extends EditBaseActivity<BasicInfo> {
         Cursor cursor = null;
         try {
             String[] proj = { MediaStore.Images.Media.DATA };
-            cursor = context.getContentResolver().query(contentUri,  proj, null, null, null);
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            cursor.moveToFirst();
-            return cursor.getString(column_index);
+            Log.i("Bowen", Boolean.toString(Uri.EMPTY.equals(contentUri)));
+            if (contentUri != null) {
+                cursor = context.getContentResolver().query(contentUri, proj, null, null, null);
+                int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                cursor.moveToFirst();
+                return cursor.getString(column_index);
+            }
+            return null;
         } finally {
             if (cursor != null) {
                 cursor.close();

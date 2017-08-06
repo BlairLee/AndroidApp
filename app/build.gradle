@@ -1,9 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'bowenlee'
+            keyPassword 'libowen1991'
+            storeFile file('/Users/apple/Documents/Android/Lecture 2/AwesomeResume/app/build/outputs/apk/app-debug.apk')
+            storePassword 'libowen1991'
+        }
+    }
     compileSdkVersion 23
     buildToolsVersion '25.0.0'
-
     defaultConfig {
         applicationId "com.jiuzhang.guojing.awesomeresume"
         minSdkVersion 15
@@ -12,6 +19,9 @@ android {
         versionName "1.0"
     }
     buildTypes {
+        debug {
+            debuggable false
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -20,7 +30,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.android.support:design:23.3.0'
